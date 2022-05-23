@@ -10,14 +10,14 @@ module OmniAuth
         assert_equal 443, strategy.options.client_options.port
         assert_equal '/authorize', strategy.options.client_options.authorization_endpoint
         assert_equal '/token', strategy.options.client_options.token_endpoint
-        binding.b
       end
 
       def test_request_phase
         expected_redirect = %r{^https://example\.com/authorize\?client_id=1234&nonce=\w{32}&response_type=code&scope=openid&state=\w{32}$}
         strategy.options.issuer = 'example.com'
         strategy.options.client_options.host = 'example.com'
-        strategy.expects(:redirect).with(regexp_matches(expected_redirect))
+        binding.b
+        strategy.expects(:redirect).with(regexp_matches(expected_redirect)) # 意図したredirect先になるか検証するモックを作る
         strategy.request_phase
       end
 
