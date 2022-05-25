@@ -17,7 +17,6 @@ module OmniAuth
         strategy.options.issuer = 'example.com'
         strategy.options.client_options.host = 'example.com'
         strategy.expects(:redirect).with(regexp_matches(expected_redirect)) # 意図したredirect先になるか検証するモックを作る
-        binding.b
         strategy.request_phase
       end
 
@@ -87,6 +86,7 @@ module OmniAuth
         request.stubs(:params).returns('login_hint' => 'john.doe@example.com', 'ui_locales' => 'en', 'claims_locales' => 'es')
 
         strategy.expects(:redirect).with(regexp_matches(expected_redirect))
+        binding.b
         strategy.request_phase
       end
 
