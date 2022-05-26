@@ -86,7 +86,6 @@ module OmniAuth
         request.stubs(:params).returns('login_hint' => 'john.doe@example.com', 'ui_locales' => 'en', 'claims_locales' => 'es')
 
         strategy.expects(:redirect).with(regexp_matches(expected_redirect))
-        binding.b
         strategy.request_phase
       end
 
@@ -238,6 +237,7 @@ module OmniAuth
         id_token.expects(:verify!)
 
         strategy.call!('rack.session' => { 'omniauth.state' => state, 'omniauth.nonce' => nonce })
+        binding.b
         strategy.callback_phase
       end
 
