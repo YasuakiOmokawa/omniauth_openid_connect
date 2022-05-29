@@ -107,6 +107,7 @@ module OmniAuth
       def callback_phase
         error = params['error_reason'] || params['error']
         error_description = params['error_description'] || params['error_reason']
+        binding.b
         invalid_state = params['state'].to_s.empty? || params['state'] != stored_state
         binding.b
 
@@ -251,6 +252,7 @@ module OmniAuth
       end
 
       def stored_state
+        binding.b
         session.delete('omniauth.state')
       end
 
@@ -271,6 +273,7 @@ module OmniAuth
       def session
         return {} if @env.nil?
 
+        binding.b
         super
       end
 
