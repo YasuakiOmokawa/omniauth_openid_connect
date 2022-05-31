@@ -271,8 +271,8 @@ module OmniAuth
 
       def session
         return {} if @env.nil?
-
         binding.b
+
         super
       end
 
