@@ -251,7 +251,6 @@ module OmniAuth
       end
 
       def stored_state
-        binding.b
         session.delete('omniauth.state')
       end
 
@@ -271,7 +270,6 @@ module OmniAuth
 
       def session
         return {} if @env.nil?
-        binding.b
 
         super
       end
