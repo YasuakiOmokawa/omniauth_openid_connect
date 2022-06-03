@@ -109,8 +109,8 @@ module OmniAuth
         error_description = params['error_description'] || params['error_reason']
         invalid_state = params['state'].to_s.empty? || params['state'] != stored_state
 
-        raise CallbackError, error: params['error'], reason: error_description, uri: params['error_uri'] if error
         binding.b
+        raise CallbackError, error: params['error'], reason: error_description, uri: params['error_uri'] if error
         raise CallbackError, error: :csrf_detected, reason: "Invalid 'state' parameter" if invalid_state
 
         return unless valid_response_type?
