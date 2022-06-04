@@ -133,6 +133,7 @@ module OmniAuth
       rescue ::Timeout::Error, ::Errno::ETIMEDOUT => e
         fail!(:timeout, e)
       rescue ::SocketError => e
+        binding.b
         fail!(:failed_to_connect, e)
       end
 
