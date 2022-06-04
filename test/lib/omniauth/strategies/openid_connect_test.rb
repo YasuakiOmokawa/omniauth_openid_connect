@@ -304,6 +304,7 @@ module OmniAuth
 
         strategy.call!('rack.session' => { 'omniauth.state' => state, 'omniauth.nonce' => nonce })
         strategy.expects(:fail!)
+        binding.b
         strategy.callback_phase
       end
 
@@ -395,6 +396,7 @@ module OmniAuth
         strategy.options.issuer = 'example.com'
 
         strategy.stubs(:access_token).raises(::SocketError.new('error'))
+        # binding.b
         strategy.call!('rack.session' => { 'omniauth.state' => state, 'omniauth.nonce' => nonce })
         strategy.expects(:fail!)
 
