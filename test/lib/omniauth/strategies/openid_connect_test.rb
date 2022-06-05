@@ -304,6 +304,7 @@ module OmniAuth
 
         strategy.call!('rack.session' => { 'omniauth.state' => state, 'omniauth.nonce' => nonce })
         strategy.expects(:fail!)
+
         binding.b
         strategy.callback_phase
       end
