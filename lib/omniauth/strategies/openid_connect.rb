@@ -132,7 +132,6 @@ module OmniAuth
       rescue ::Timeout::Error, ::Errno::ETIMEDOUT => e
         fail!(:timeout, e)
       rescue ::SocketError => e
-        binding.b
         fail!(:failed_to_connect, e)
       end
 
@@ -159,6 +158,7 @@ module OmniAuth
 
       def authorize_uri
         client.redirect_uri = redirect_uri
+        binding.b
         opts = {
           response_type: options.response_type,
           response_mode: options.response_mode,
@@ -179,6 +179,7 @@ module OmniAuth
           opts[key] = request.params[key.to_s] unless opts.key?(key)
         end
 
+        binding.b
         client.authorization_uri(opts.reject { |_k, v| v.nil? })
       end
 
@@ -247,7 +248,10 @@ module OmniAuth
                     options.state.call
                   end
                 end
+        binding.b
+        # セッションにstateを設定する
         session['omniauth.state'] = state || SecureRandom.hex(16)
+        session['omniauth.state'] = SecureRandom.hex(16)
       end
 
       def stored_state
@@ -270,8 +274,6 @@ module OmniAuth
 
       def session
         return {} if @env.nil?
-
-        binding.b
 
         super
       end
