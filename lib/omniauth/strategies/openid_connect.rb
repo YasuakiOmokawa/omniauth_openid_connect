@@ -251,7 +251,6 @@ module OmniAuth
         binding.b
         # セッションにstateを設定する
         session['omniauth.state'] = state || SecureRandom.hex(16)
-        session['omniauth.state'] = SecureRandom.hex(16)
       end
 
       def stored_state
