@@ -13,6 +13,7 @@ module OmniAuth
       end
 
       def test_request_phase
+        binding.b
         expected_redirect = %r{^https://example\.com/authorize\?client_id=1234&nonce=\w{32}&response_type=code&scope=openid&state=\w{32}$}
         strategy.options.issuer = 'example.com'
         strategy.options.client_options.host = 'example.com'
