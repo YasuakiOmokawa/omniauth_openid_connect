@@ -6,5 +6,7 @@ gemspec
 gem 'debug'
 
 # rackアプリケーションのテスト用
-gem "rack"
-gem "puma"
+gem 'rack', '~> 2.2', '>= 2.2.3.1'
+gem 'puma'
+gem 'omniauth'
+gem 'sinatra'
