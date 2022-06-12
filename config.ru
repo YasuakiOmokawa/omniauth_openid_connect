@@ -17,7 +17,6 @@ class HelloRackMiddleware
     status, headers, body = @app.call(env)
 
     fixed_body = ["Hello Rack Middleware!\n"] + body
-
     [status, headers, fixed_body]
   end
 end
@@ -31,11 +30,24 @@ class AnotherRackMiddleware
     status, headers, body = @app.call(env)
 
     fixed_body = ["Another Rack Middleware!\n"] + body
-
     [status, headers, fixed_body]
   end
 end
 
-use HelloRackMiddleware
-use AnotherRackMiddleware
+class ContentLengthMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    status, headers, body = @app.call(env)
+    p body
+    headers['Content-Length'] = body.join.bytesize.to_s
+    [status, headers, body]
+  end
+end
+
+use ContentLengthMiddleware #3
+use HelloRackMiddleware #2
+use AnotherRackMiddleware #1
 run App.new
