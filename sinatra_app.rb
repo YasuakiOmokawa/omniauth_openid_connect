@@ -2,7 +2,7 @@ require 'sinatra'
 require 'debug'
 require 'omniauth'
 
-use Rack::Session::Cookie
+enable :sessions
 use OmniAuth::Strategies::Developer
 
 get '/' do
