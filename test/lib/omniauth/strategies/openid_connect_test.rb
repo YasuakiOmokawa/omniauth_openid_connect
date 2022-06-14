@@ -208,6 +208,7 @@ module OmniAuth
 
         strategy.expects(:decode_id_token).twice.with(access_token.id_token).returns(id_token)
         strategy.call!('rack.session' => { 'omniauth.state' => state, 'omniauth.nonce' => nonce })
+        binding.b
         strategy.callback_phase
       end
 
