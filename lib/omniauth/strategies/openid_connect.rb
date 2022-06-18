@@ -226,6 +226,7 @@ module OmniAuth
           scope: (options.scope if options.send_scope_to_token_endpoint),
           client_auth_method: options.client_auth_method
         )
+        binding.b
 
         verify_id_token!(@access_token.id_token) if configured_response_type == 'code'
 
