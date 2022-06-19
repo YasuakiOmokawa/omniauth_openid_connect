@@ -40,6 +40,7 @@ class StrategyTestCase < MiniTest::Test
       request.stubs(:scheme).returns({})
       request.stubs(:ssl?).returns(false)
       request.stubs(:path).returns('')
+      request.stubs(:hoge).returns('fuga')
     end
   end
 
