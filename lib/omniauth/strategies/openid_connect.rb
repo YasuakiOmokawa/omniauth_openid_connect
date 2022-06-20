@@ -158,7 +158,6 @@ module OmniAuth
 
       def authorize_uri
         client.redirect_uri = redirect_uri
-        binding.b
         opts = {
           response_type: options.response_type,
           response_mode: options.response_mode,
