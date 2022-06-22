@@ -241,6 +241,7 @@ module OmniAuth
         strategy.call!('rack.session' => { 'omniauth.state' => state, 'omniauth.nonce' => nonce })
 
         binding.b
+
         strategy.callback_phase
       end
 
